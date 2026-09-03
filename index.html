@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Album tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  </head>
+  <body>
+    <!--<h1>Album tracker</h1>-->
+
+    <div class = "container-fluid">
+        <!--Grilla general de la página, de las 12 columnas, 4 para el formulario y 8 para mostrar los albumes-->
+        <div class="row">
+            <div class="col-4 border-end border-dark">
+                <!--Inicio formulario-->
+                <form id="album-form">
+                    <!--Inicia primer campo-->
+                    <div class="mb-3">
+                        <label for="albumTitle" class = "form-label">Album Title</label>
+                        <br>
+                        <input name="title" type = "text" class="form control" id = "albumTitle" placeholder = "Title">
+                    </div>
+                    <!--Fin primer campo-->
+                    <!--Inicia segundo campo-->
+                    <div class="mb-3">
+                        <label for="albumArtist" class = "form-label">Album Artist</label>
+                        <br>
+                        <input name="artist" type = "text" class="form control" id = "albumArtist" placeholder = "Artist">
+                    </div>
+                    <!--Fin segundo campo-->
+                    <!--Inicia tercer campo-->
+                    <div class="mb-3">
+                        <label for="albumYear" class = "form-label">Release Year</label>
+                        <br>
+                        <input name="year" type = "text" class="form control" id = "albumYear" placeholder = "Release">
+                    </div>
+                    <!--Fin tercer campo-->
+                    <!--Inicia cuarto campo-->
+                    <div class="mb-3">
+                        <label for="albumGenre" class = "form-label">Album Genre</label>
+                        <br>
+                        <input name="genre" type = "text" class="form control" id = "albumGenre" placeholder="Genre">
+                    </div>
+                    <!--Fin cuarto campo-->
+                    <!--Inicia quinto campo-->
+                    <div class="mb-3">
+                        <label for="albumRating" class = "form-label">Album Rating</label>
+                        <br>
+                        <input name="rating" type = "text" class="form control" id = "albumRating" placeholder="Rating">
+                    </div>
+                    <!--Fin quinto campo-->
+                    <!--Inicia sexto campo-->
+                    <div class="mb-3">
+                        <input name="listened" type = "checkbox" class="form control" id = "albumListened">
+                        <label for="albumListened" class = "form-label">Listened</label>
+                    </div>
+                    <!--Fin sexto campo-->
+                    <!--Inicio botón-->
+                    <button type="submit" class="btn btn-primary">Send</button>
+                    <!--Fin botón-->
+                <!--Fin formulario-->
+                </form>
+            </div>
+            <div class="col-8">
+                <main id="album-container">
+                    Texto del elemento contenedor
+                    <p>Hola dentro de un p</p>
+                </main>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
