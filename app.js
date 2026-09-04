@@ -48,56 +48,44 @@ formEl.addEventListener("submit", (event) => {
     console.log(formData);
     const dataArray = [... formData];
     console.log(dataArray);
-    const  dataObject = Object.fromEntries(dataArray);
-    console.log(dataObject);
+    const album = Object.fromEntries(dataArray);
+    console.log(album);
     // Hacer todo lo lo anterior en una linea
     //const album = Object.fromEntries([... new FormData(formEl)]);
     //console.log(album);
 });
 
+
+
+const renderCard = (albumObject, htmlElement) => {
 const card = `
     <div class="card" style="width: 18rem;">
         <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+        <h5 class="card-title">${albumObject.title}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">${albumObject.artist}</h6>
+        <p class="card-text">Genero: ${albumObject.genre}</p>
+        <a href="#" class="card-link">Año de lanzamiento: ${albumObject.year}</a>
+        <a href="#" class="card-link">Rating: ${albumObject.rating}</a>
         </div>
     </div>
 `;
+htmlElement.insertAdjacentHTML("beforeend", card);
+};
 
 /**
- * Manipulación de la interfaz
- * 1. Propiedad llamada innerhtml dentro de ella podremos obsevar
- * todo el html que vive dentro de la etiqueta seleccionada
- * si lo usamos sin cuidado podemos borrar todo lo que estaba
- * ! IMPROTANTE
- * ! NO USAR innerHTML para renderizar solo texto si estoy recibiendo y mostrando inmediatamente (propenso a inyección de html)
- * 2. Propiedad llamada textContent esta solo mostrara el texto que tiene dentro
- */
-
-console.log(mainEl.innerHTML);
-console.log("Text content");
-console.log(mainEl.textContent);
-
-mainEl.innerHTML += "<h1>Hola ch71</h1>";
-mainEl.innerHTML += card;
-console.log(mainEl.innerHTML);
-
-//mainEl.textContent += "hola";
-//mainEl.textContent += card; //textContent es mas seguro si solo se renderiza text
-
-/**
- * Insert Adjacent HTML
- * Permite insertar html en el contenedor sin borrar lo que ya está y en una posición específica
- * tiene 4 posiciones
- * 1. beforebegin
- * 2. beforeend
- * 
- */
-mainEl.insertAdjacentHTML(
-    "beforeend", "<p>Insertado por insert adjacent HTML</p>"
-);
-
+ * Opción solo para este script
+ * const renderCard = (albumObject) => {
+const card = `
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title">${albumObject.title}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">${albumObject.artist}</h6>
+        <p class="card-text">Genero: ${albumObject.genre}</p>
+        <a href="#" class="card-link">Año de lanzamiento: ${albumObject.year}</a>
+        <a href="#" class="card-link">Rating: ${albumObject.rating}</a>
+        </div>
+    </div>
+`;
 mainEl.insertAdjacentHTML("beforeend", card);
+};
+ */
