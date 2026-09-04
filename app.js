@@ -24,6 +24,8 @@ console.log(formEl);
 const mainEl = document.querySelector("#album-container");
 console.log(mainEl);
 
+const albums = [];
+
 /**
  * Eventos
  * Es cualquier acción que realiza el usuario en la página web
@@ -53,6 +55,13 @@ formEl.addEventListener("submit", (event) => {
     // Hacer todo lo lo anterior en una linea
     //const album = Object.fromEntries([... new FormData(formEl)]);
     //console.log(album);
+    albums.push(album);
+    //console.log(albums);
+    // Limpiamos antes de volver a renderizar las cards para evitar la acumulación
+    mainEl.innerHTML = "";
+    // Renderizamos todas las cards dentro del array de albums
+    albums.map((album) => renderCard(album, mainEl));
+    formEl.reset();
 });
 
 
