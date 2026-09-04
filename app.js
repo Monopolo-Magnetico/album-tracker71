@@ -19,10 +19,10 @@
  */
 
 const formEl = document.getElementById("album-form");
-console.log(formEl);
+//console.log(formEl);
 
 const mainEl = document.querySelector("#album-container");
-console.log(mainEl);
+//console.log(mainEl);
 
 const albums = [];
 
@@ -43,6 +43,10 @@ const albums = [];
  * object from entries recibe un array de arrays
  */
 
+window.addEventListener("load", (event) => {
+    console.log(event);
+});
+
 formEl.addEventListener("submit", (event) => {
     event.preventDefault();
     const formData = new FormData(formEl);
@@ -56,10 +60,12 @@ formEl.addEventListener("submit", (event) => {
     //const album = Object.fromEntries([... new FormData(formEl)]);
     //console.log(album);
     albums.push(album);
+    setLocalStorage("albums", albums);
     //console.log(albums);
     // Limpiamos antes de volver a renderizar las cards para evitar la acumulación
     mainEl.innerHTML = "";
     // Renderizamos todas las cards dentro del array de albums
+    // Al recorrer el array con map nos aseguramos de no mostrar cards de manera acumulativa
     albums.map((album) => renderCard(album, mainEl));
     formEl.reset();
 });
@@ -80,6 +86,20 @@ const card = `
 `;
 htmlElement.insertAdjacentHTML("beforeend", card);
 };
+
+const setLocalStorage = (key, value) => {
+    // Paso 1 convertir el valor a text
+    const textValue = JSON.stringify(value);
+    // Paso 2 almacenar
+    localStorage.setItem(key, textValue);
+}
+
+const getItemLocalStorage = (key) => {
+    if (localStorage.getItem(key) == null) return;
+    // Convertimos de texto a lenguaje js
+    const data = JSON.parse(localStorage.getItem(key));
+    return data;
+}
 
 /**
  * Opción solo para este script
