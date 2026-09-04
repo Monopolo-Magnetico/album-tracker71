@@ -24,7 +24,8 @@ const formEl = document.getElementById("album-form");
 const mainEl = document.querySelector("#album-container");
 //console.log(mainEl);
 
-const albums = [];
+let albums = [];
+//const albums = []; // Segunda opcion
 
 /**
  * Eventos
@@ -44,7 +45,17 @@ const albums = [];
  */
 
 window.addEventListener("load", (event) => {
-    console.log(event);
+    if(getItemLocalStorage("albums") == undefined) return;
+    // Transformar a un array mas legible
+    albums =  [... getItemLocalStorage("albums")];
+    // Que se muestren las cards cuando se cierre y vuelva a abrir la página
+    albums.map((album) => renderCard(album, mainEl));
+    /**
+     * Segunda opcion
+     * getItemLocalStorage("albums").forEach((album) => albums.push(album));
+     * console.log(albums);
+     */
+    
 });
 
 formEl.addEventListener("submit", (event) => {

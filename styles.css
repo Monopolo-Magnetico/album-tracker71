@@ -1,4 +1,10 @@
-main {
-    padding: 20px;
-    border: 10px solid red;
+/*No funca nada, posiblemente por las configuraciones de bootstrap*/
+#album-container {
+    display: grid !important;
+    grid-template-columns: repeat(autofit, minmax(100px, 1fr)) !important;
+    gap: 10px;
+}
+
+.card {
+    max-height: fit-content;
 }
